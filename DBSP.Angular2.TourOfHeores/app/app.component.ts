@@ -12,3 +12,4 @@ import { IHeroService } from "./Heroes/hero.service";
   providers: [IHeroService]
 })
 export class AppComponent { }
+
