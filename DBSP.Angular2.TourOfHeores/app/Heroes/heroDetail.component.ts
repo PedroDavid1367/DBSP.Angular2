@@ -1,20 +1,40 @@
-﻿import { Component, Input } from "@angular/core";
+﻿import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 
 import { Hero } from "./hero.type";
 
 @Component({
   selector: "hero-detail",
+  styles: [".active { background-color: beige; }"],
   template: `
-  <div>
-    <p><em>{{ hero.name }}</em></p>
-    <p><em>{{ hero.id }}</em></p>
-    <p><em>Hard coded comment</em></p>
-    <p><em>More hard coded comment</em></p>
-  </div> 
+  <div [ngClass]="{active: clicked}">
+    <span>{{ hero.id }}. </span> 
+    <a href="#" (click)="heroClicked()">{{ hero.name }}</a>
+  </div>
   `
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnChanges {
   @Input() hero: Hero;
+  @Output() change: EventEmitter<HeroClickedObject> = new EventEmitter<HeroClickedObject>();
+  @Output() log: EventEmitter<string> = new EventEmitter<string>();
+  clicked: boolean = false;
+
+  ngOnChanges() {
+    this.log.emit(`ngOnChanges activated for: ${this.hero.name}`);
+  }
+
+  heroClicked(): void {
+    this.clicked = !this.clicked
+    let heroCLickedObj: HeroClickedObject = {
+      clicked: this.clicked,
+      hero: this.hero
+    };
+    this.change.emit(heroCLickedObj);
+  }
+}
+
+export interface HeroClickedObject {
+  clicked: boolean;
+  hero: Hero;
 }
 
 

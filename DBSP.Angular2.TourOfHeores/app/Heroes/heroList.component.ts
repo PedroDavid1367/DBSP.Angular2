@@ -2,19 +2,21 @@
 
 import { Hero } from "./hero.type";
 import { IHeroService, HeroService } from "./hero.service";
-import { HeroDetailComponent } from "./heroDetail.component";
+import { HeroDetailComponent, HeroClickedObject } from "./heroDetail.component";
 
 @Component({
   selector: "hero-list",
   template: `
   <div>
-    <div *ngFor="let hero of heroes">
-      <div>
-        {{ hero.id }}.- <a href="#" (click)="select(hero)">{{ hero.name }}</a>
-      </div>
-    </div>
-    <div *ngIf="selectedHero">
-      <hero-detail [hero]="selectedHero"></hero-detail>
+    <hero-detail *ngFor="let hero of heroes" [hero]="hero"
+                (change)="onHeroClicked($event)" 
+                (log)="printOnConsole($event)">
+    </hero-detail>
+    <div *ngIf="lowerPaneSelected">
+      <p>{{ selectedHero.name }}</p>
+      <p>{{ selectedHero.id }}</p>
+      <p>Some random comment</p>
+      <p>More random stuff</p>
     </div>
   </div>
   `,
@@ -23,6 +25,7 @@ import { HeroDetailComponent } from "./heroDetail.component";
 export class HeroListComponent implements OnInit{
   private _heroService: IHeroService;
   heroes: Hero[];
+  lowerPaneSelected: boolean = false;
   selectedHero: Hero;
 
   constructor(heroService: IHeroService) {
@@ -33,7 +36,12 @@ export class HeroListComponent implements OnInit{
     this.heroes = this._heroService.getHeroes();
   }
 
-  select(hero: Hero) {
-    this.selectedHero = hero;
+  printOnConsole(message: string): void {
+    console.log(message);
+  }
+
+  onHeroClicked(heroClickedObj: HeroClickedObject): void {
+    this.lowerPaneSelected = heroClickedObj.clicked;
+    this.selectedHero = heroClickedObj.hero;
   }
 }

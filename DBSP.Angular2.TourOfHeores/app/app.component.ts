@@ -5,8 +5,10 @@ import { IHeroService } from "./Heroes/hero.service";
 @Component({
   selector: "app",
   template: `
-  <h1>A nooby Hero list</h1>
-  <hero-list></hero-list>
+  <div class="container">
+    <h1>A nooby Hero list</h1>
+    <hero-list></hero-list>
+  </div>
   `,
   directives: [HeroListComponent],
   providers: [IHeroService]
