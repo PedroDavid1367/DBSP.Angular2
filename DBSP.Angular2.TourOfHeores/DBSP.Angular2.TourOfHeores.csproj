@@ -14327,10 +14327,13 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\Directories\directory.ts" />
+    <TypeScriptCompile Include="app\Directories\tree-view-demo.component.ts" />
+    <TypeScriptCompile Include="app\Directories\tree-view.component.ts" />
+    <TypeScriptCompile Include="app\Heroes\hero-detail.component.ts" />
+    <TypeScriptCompile Include="app\Heroes\hero-list.component.ts" />
     <TypeScriptCompile Include="app\Heroes\hero.service.ts" />
     <TypeScriptCompile Include="app\Heroes\hero.type.ts" />
-    <TypeScriptCompile Include="app\Heroes\heroDetail.component.ts" />
-    <TypeScriptCompile Include="app\Heroes\heroList.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="node_modules\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40angular\common\esm\src\common_directives.d.ts" />
