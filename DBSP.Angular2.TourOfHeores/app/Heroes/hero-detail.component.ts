@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
+﻿import { Component, Input, Output, EventEmitter, OnChanges, OnInit } from "@angular/core";
 
 import { Hero } from "./hero.type";
 
@@ -12,30 +12,26 @@ import { Hero } from "./hero.type";
   </div>
   `
 })
-export class HeroDetailComponent implements OnChanges {
+export class HeroDetailComponent implements OnChanges, OnInit {
   @Input() hero: Hero;
-  @Output() change: EventEmitter<HeroClickedObject> = new EventEmitter<HeroClickedObject>();
+  @Output() change: EventEmitter<HeroDetailComponent> = new EventEmitter<HeroDetailComponent>();
   @Output() log: EventEmitter<string> = new EventEmitter<string>();
+  @Output() attach: EventEmitter<HeroDetailComponent> = new EventEmitter<HeroDetailComponent>() 
   clicked: boolean = false;
 
   ngOnChanges() {
     this.log.emit(`ngOnChanges activated for: ${this.hero.name}`);
   }
 
+  ngOnInit() {
+    this.attach.emit(this);
+  }
+
   heroClicked(): void {
-    this.clicked = !this.clicked
-    let heroCLickedObj: HeroClickedObject = {
-      clicked: this.clicked,
-      hero: this.hero
-    };
-    this.change.emit(heroCLickedObj);
+    this.change.emit(this);
   }
 }
 
-export interface HeroClickedObject {
-  clicked: boolean;
-  hero: Hero;
-}
 
 
 

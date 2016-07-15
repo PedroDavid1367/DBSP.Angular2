@@ -1,16 +1,18 @@
 ﻿import { Component, OnInit } from "@angular/core";
 
 import { Hero } from "./hero.type";
-import { IHeroService, HeroService } from "./hero.service";
-import { HeroDetailComponent, HeroClickedObject } from "./hero-detail.component";
+import { HeroService } from "./hero.service";
+import { HeroDetailComponent } from "./hero-detail.component";
 
 @Component({
   selector: "hero-list",
   template: `
   <div>
-    <hero-detail *ngFor="let hero of heroes" [hero]="hero"
-                (change)="onHeroClicked($event)" 
-                (log)="printOnConsole($event)">
+    <hero-detail *ngFor="let hero of heroes" 
+                 [hero]="hero"
+                 (change)="onHeroClicked($event)" 
+                 (log)="printOnConsole($event)"
+                 (attach)="addChildComponent($event)">
     </hero-detail>
     <div *ngIf="lowerPaneSelected">
       <p>{{ selectedHero.name }}</p>
@@ -23,13 +25,12 @@ import { HeroDetailComponent, HeroClickedObject } from "./hero-detail.component"
   directives: [HeroDetailComponent]
 })
 export class HeroListComponent implements OnInit{
-  private _heroService: IHeroService;
   heroes: Hero[];
   lowerPaneSelected: boolean = false;
   selectedHero: Hero;
+  heroDetailComponents: HeroDetailComponent[] = []
 
-  constructor(heroService: IHeroService) {
-    this._heroService = new HeroService();
+  constructor(private _heroService: HeroService) {
   }
 
   ngOnInit() {
@@ -40,8 +41,16 @@ export class HeroListComponent implements OnInit{
     console.log(message);
   }
 
-  onHeroClicked(heroClickedObj: HeroClickedObject): void {
-    this.lowerPaneSelected = heroClickedObj.clicked;
-    this.selectedHero = heroClickedObj.hero;
+  onHeroClicked(child: HeroDetailComponent): void {
+    for (let comp of this.heroDetailComponents) {
+      comp.clicked = false;
+    }
+    child.clicked = true;
+    this.lowerPaneSelected = child.clicked;
+    this.selectedHero = child.hero;
+  }
+
+  addChildComponent(child: HeroDetailComponent): void {
+    this.heroDetailComponents.push(child);
   }
 }
