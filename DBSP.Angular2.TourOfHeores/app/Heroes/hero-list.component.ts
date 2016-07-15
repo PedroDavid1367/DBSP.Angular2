@@ -2,7 +2,7 @@
 
 import { Hero } from "./hero.type";
 import { IHeroService, HeroService } from "./hero.service";
-import { HeroDetailComponent, HeroClickedObject } from "./heroDetail.component";
+import { HeroDetailComponent, HeroClickedObject } from "./hero-detail.component";
 
 @Component({
   selector: "hero-list",

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { HeroListComponent } from "./Heroes/heroList.component";
+import { HeroListComponent } from "./Heroes/hero-list.component";
 import { IHeroService } from "./Heroes/hero.service";
 
 @Component({
