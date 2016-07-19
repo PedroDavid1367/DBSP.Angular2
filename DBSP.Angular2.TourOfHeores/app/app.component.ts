@@ -15,6 +15,6 @@ import { TreeViewDemo } from "./Directories/tree-view-demo.component";
   `,
   directives: [HeroListComponent, TreeViewDemo],
   //providers: [{ provide: IHeroService, useClass: HeroService }]
-  providers: [HeroService]
+  providers: [{ provide: IHeroService, useClass: HeroService }]
 })
 export class AppComponent { }

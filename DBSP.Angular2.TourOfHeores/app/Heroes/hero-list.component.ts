@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from "@angular/core";
 
 import { Hero } from "./hero.type";
-import { HeroService } from "./hero.service";
+import { IHeroService } from "./hero.service";
 import { HeroDetailComponent } from "./hero-detail.component";
 
 @Component({
@@ -30,7 +30,7 @@ export class HeroListComponent implements OnInit{
   selectedHero: Hero;
   heroDetailComponents: HeroDetailComponent[] = []
 
-  constructor(private _heroService: HeroService) {
+  constructor(private _heroService: IHeroService) {
   }
 
   ngOnInit() {
