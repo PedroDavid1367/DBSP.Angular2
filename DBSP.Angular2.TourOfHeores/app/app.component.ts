@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { HeroListComponent } from "./Heroes/hero-list.component";
-import { HeroService } from "./Heroes/hero.service";
+import { IHeroService, HeroService } from "./Heroes/hero.service";
 // External sample
 import { TreeViewDemo } from "./Directories/tree-view-demo.component";
 
@@ -14,6 +14,7 @@ import { TreeViewDemo } from "./Directories/tree-view-demo.component";
   <!--<tree-view-demo></tree-view-demo>-->
   `,
   directives: [HeroListComponent, TreeViewDemo],
+  //providers: [{ provide: IHeroService, useClass: HeroService }]
   providers: [HeroService]
 })
 export class AppComponent { }
