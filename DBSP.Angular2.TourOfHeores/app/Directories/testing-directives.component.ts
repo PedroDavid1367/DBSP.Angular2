@@ -71,3 +71,4 @@ export class TestingDirectives {
     this.greet(this.noobyObject.status);
   }
 }
+
