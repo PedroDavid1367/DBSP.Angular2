@@ -14328,6 +14328,7 @@
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\Directories\directory.ts" />
+    <TypeScriptCompile Include="app\Directories\testing-directives.component.ts" />
     <TypeScriptCompile Include="app\Directories\tree-view-demo.component.ts" />
     <TypeScriptCompile Include="app\Directories\tree-view.component.ts" />
     <TypeScriptCompile Include="app\Heroes\hero-detail.component.ts" />
