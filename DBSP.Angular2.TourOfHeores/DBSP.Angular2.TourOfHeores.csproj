@@ -14336,6 +14336,7 @@
     <TypeScriptCompile Include="app\Heroes\hero.service.ts" />
     <TypeScriptCompile Include="app\Heroes\hero.type.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\Oauth2\oauth2.component.ts" />
     <TypeScriptCompile Include="node_modules\%40angular\common\esm\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40angular\common\esm\src\common_directives.d.ts" />
     <TypeScriptCompile Include="node_modules\%40angular\common\esm\src\directives.d.ts" />
